@@ -1,0 +1,146 @@
+/* Oakglobal Maritim custom ERPNext login theme. Core-safe: loaded from custom app. */
+
+:root {
+  --oak-navy: #071426;
+  --oak-blue: #0d3b66;
+  --oak-cyan: #31c5f4;
+  --oak-gold: #d6a84f;
+  --oak-text: #e8f1ff;
+}
+
+body[data-path="login"],
+body[data-path="login"] .page-card-head,
+body[data-path="login"] .for-login {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body[data-path="login"] {
+  min-height: 100vh;
+  color: var(--oak-text);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(49, 197, 244, 0.28), transparent 30%),
+    radial-gradient(circle at 85% 12%, rgba(214, 168, 79, 0.18), transparent 26%),
+    linear-gradient(135deg, #030712 0%, var(--oak-navy) 46%, #061f3f 100%) !important;
+  overflow-x: hidden;
+}
+
+body[data-path="login"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 82%);
+}
+
+body[data-path="login"]::after {
+  content: "OAKGLOBAL MARITIM\A ERP OPERATIONS";
+  white-space: pre;
+  position: fixed;
+  left: clamp(24px, 7vw, 96px);
+  top: 18vh;
+  max-width: 520px;
+  color: rgba(232, 241, 255, 0.94);
+  font-size: clamp(34px, 5vw, 72px);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  text-shadow: 0 18px 60px rgba(0,0,0,0.45);
+  pointer-events: none;
+}
+
+body[data-path="login"] .for-login::before {
+  content: "Shipping • Finance • Operations";
+  display: block;
+  margin: 0 auto 18px;
+  width: fit-content;
+  padding: 8px 14px;
+  border: 1px solid rgba(214, 168, 79, 0.5);
+  border-radius: 999px;
+  color: #ffe2a3;
+  background: rgba(214, 168, 79, 0.08);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body[data-path="login"] .page-card {
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  border-radius: 24px !important;
+  background: rgba(7, 20, 38, 0.72) !important;
+  box-shadow: 0 24px 90px rgba(0,0,0,0.48), inset 0 1px 0 rgba(255,255,255,0.09) !important;
+  backdrop-filter: blur(20px);
+}
+
+body[data-path="login"] .page-card-head h4,
+body[data-path="login"] .page-card-head .indicator-blue {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+body[data-path="login"] .page-card-head h4::after {
+  content: "Oakglobal secure ERP portal";
+  display: block;
+  margin-top: 8px;
+  color: rgba(232,241,255,0.66);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+body[data-path="login"] .form-control {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  border-radius: 14px !important;
+}
+
+body[data-path="login"] .form-control:focus {
+  border-color: rgba(49, 197, 244, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(49,197,244,0.14) !important;
+}
+
+body[data-path="login"] label,
+body[data-path="login"] .forgot-password-message,
+body[data-path="login"] .sign-up-message,
+body[data-path="login"] a {
+  color: rgba(232,241,255,0.78) !important;
+}
+
+body[data-path="login"] .btn-primary,
+body[data-path="login"] .btn-login {
+  border: 0 !important;
+  border-radius: 14px !important;
+  color: #06111f !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, var(--oak-gold), #ffe2a3) !important;
+  box-shadow: 0 14px 34px rgba(214,168,79,0.24) !important;
+}
+
+body[data-path="login"] .btn-primary:hover,
+body[data-path="login"] .btn-login:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+body[data-path="login"] .navbar,
+body[data-path="login"] footer,
+body[data-path="login"] .web-footer {
+  background: transparent !important;
+  color: rgba(232,241,255,0.65) !important;
+}
+
+@media (max-width: 900px) {
+  body[data-path="login"]::after {
+    position: relative;
+    display: block;
+    left: auto;
+    top: auto;
+    padding: 32px 22px 0;
+    text-align: center;
+    font-size: 34px;
+  }
+}
