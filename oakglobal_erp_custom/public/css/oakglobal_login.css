@@ -1,11 +1,15 @@
-/* Oakglobal Maritim custom ERPNext login theme. Core-safe: loaded from custom app. */
+/* Oakglobal Maritim ERPNext login theme.
+   Simple corporate style, loaded from custom app. */
 
 :root {
-  --oak-navy: #071426;
-  --oak-blue: #0d3b66;
-  --oak-cyan: #31c5f4;
-  --oak-gold: #d6a84f;
-  --oak-text: #e8f1ff;
+  --oak-navy: #0b1f35;
+  --oak-blue: #12395c;
+  --oak-border: #d9e2ec;
+  --oak-bg: #f4f7fb;
+  --oak-text: #1f2933;
+  --oak-muted: #697386;
+  --oak-button: #0b3a66;
+  --oak-button-hover: #092f52;
 }
 
 body[data-path="login"],
@@ -17,130 +21,142 @@ body[data-path="login"] .for-login {
 body[data-path="login"] {
   min-height: 100vh;
   color: var(--oak-text);
-  background:
-    radial-gradient(circle at 18% 18%, rgba(49, 197, 244, 0.28), transparent 30%),
-    radial-gradient(circle at 85% 12%, rgba(214, 168, 79, 0.18), transparent 26%),
-    linear-gradient(135deg, #030712 0%, var(--oak-navy) 46%, #061f3f 100%) !important;
-  overflow-x: hidden;
+  background: var(--oak-bg) !important;
 }
 
+/* Simple white top brand bar */
 body[data-path="login"]::before {
   content: "";
   position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 82%);
+  inset: 0 0 auto 0;
+  height: 72px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--oak-border);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+  z-index: 0;
 }
 
+/* Brand text */
 body[data-path="login"]::after {
-  content: "OAKGLOBAL MARITIM\A ERP OPERATIONS";
-  white-space: pre;
+  content: "Oakglobal Maritim";
   position: fixed;
-  left: clamp(24px, 7vw, 96px);
-  top: 18vh;
-  max-width: 520px;
-  color: rgba(232, 241, 255, 0.94);
-  font-size: clamp(34px, 5vw, 72px);
-  line-height: 0.95;
-  font-weight: 800;
-  letter-spacing: -0.055em;
-  text-shadow: 0 18px 60px rgba(0,0,0,0.45);
-  pointer-events: none;
-}
-
-body[data-path="login"] .for-login::before {
-  content: "Shipping • Finance • Operations";
-  display: block;
-  margin: 0 auto 18px;
-  width: fit-content;
-  padding: 8px 14px;
-  border: 1px solid rgba(214, 168, 79, 0.5);
-  border-radius: 999px;
-  color: #ffe2a3;
-  background: rgba(214, 168, 79, 0.08);
-  font-size: 12px;
+  top: 22px;
+  left: clamp(24px, 6vw, 80px);
+  color: var(--oak-navy);
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  z-index: 1;
 }
 
+/* Center login area */
+body[data-path="login"] .for-login {
+  margin-top: 80px;
+}
+
+/* Small subtitle above card */
+body[data-path="login"] .for-login::before {
+  content: "ERP Operations Portal";
+  display: block;
+  margin: 0 auto 16px;
+  color: var(--oak-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Login card */
 body[data-path="login"] .page-card {
-  border: 1px solid rgba(255,255,255,0.16) !important;
-  border-radius: 24px !important;
-  background: rgba(7, 20, 38, 0.72) !important;
-  box-shadow: 0 24px 90px rgba(0,0,0,0.48), inset 0 1px 0 rgba(255,255,255,0.09) !important;
-  backdrop-filter: blur(20px);
+  border: 1px solid var(--oak-border) !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08) !important;
 }
 
+/* Card title */
 body[data-path="login"] .page-card-head h4,
 body[data-path="login"] .page-card-head .indicator-blue {
-  color: #ffffff !important;
-  font-weight: 800;
+  color: var(--oak-text) !important;
+  font-weight: 700;
 }
 
 body[data-path="login"] .page-card-head h4::after {
-  content: "Oakglobal secure ERP portal";
+  content: "Sign in with your company account";
   display: block;
-  margin-top: 8px;
-  color: rgba(232,241,255,0.66);
+  margin-top: 6px;
+  color: var(--oak-muted);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
+/* Inputs */
 body[data-path="login"] .form-control {
-  color: #ffffff !important;
-  background: rgba(255,255,255,0.08) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
-  border-radius: 14px !important;
+  color: var(--oak-text) !important;
+  background: #ffffff !important;
+  border: 1px solid var(--oak-border) !important;
+  border-radius: 8px !important;
 }
 
 body[data-path="login"] .form-control:focus {
-  border-color: rgba(49, 197, 244, 0.9) !important;
-  box-shadow: 0 0 0 4px rgba(49,197,244,0.14) !important;
+  border-color: var(--oak-blue) !important;
+  box-shadow: 0 0 0 3px rgba(18, 57, 92, 0.12) !important;
 }
 
+/* Text links */
 body[data-path="login"] label,
 body[data-path="login"] .forgot-password-message,
 body[data-path="login"] .sign-up-message,
 body[data-path="login"] a {
-  color: rgba(232,241,255,0.78) !important;
+  color: var(--oak-muted) !important;
 }
 
+/* Login button */
 body[data-path="login"] .btn-primary,
 body[data-path="login"] .btn-login {
   border: 0 !important;
-  border-radius: 14px !important;
-  color: #06111f !important;
-  font-weight: 800 !important;
-  background: linear-gradient(135deg, var(--oak-gold), #ffe2a3) !important;
-  box-shadow: 0 14px 34px rgba(214,168,79,0.24) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  background: var(--oak-button) !important;
+  box-shadow: none !important;
 }
 
 body[data-path="login"] .btn-primary:hover,
 body[data-path="login"] .btn-login:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
+  background: var(--oak-button-hover) !important;
 }
 
-body[data-path="login"] .navbar,
+/* Header/footer cleanup */
+body[data-path="login"] .navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--oak-border) !important;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05) !important;
+}
+
+body[data-path="login"] .navbar a,
+body[data-path="login"] .navbar .navbar-brand {
+  color: var(--oak-navy) !important;
+}
+
 body[data-path="login"] footer,
 body[data-path="login"] .web-footer {
+  color: var(--oak-muted) !important;
   background: transparent !important;
-  color: rgba(232,241,255,0.65) !important;
 }
 
+/* Mobile */
 @media (max-width: 900px) {
   body[data-path="login"]::after {
-    position: relative;
-    display: block;
-    left: auto;
-    top: auto;
-    padding: 32px 22px 0;
-    text-align: center;
-    font-size: 34px;
+    left: 20px;
+    font-size: 18px;
+  }
+
+  body[data-path="login"] .for-login {
+    margin-top: 64px;
+  }
+
+  body[data-path="login"] .page-card {
+    border-radius: 10px !important;
   }
 }
