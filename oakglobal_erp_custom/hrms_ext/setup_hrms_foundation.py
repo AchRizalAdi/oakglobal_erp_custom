@@ -54,3 +54,44 @@ def ensure_workflows():
         w.insert(ignore_permissions=True)
 def run():
     ensure_roles(); ensure_employee_fields(); ensure_doctypes(); ensure_workflows(); frappe.db.commit(); frappe.clear_cache()
+
+
+def smoke_test():
+    from oakglobal_erp_custom.hrms_ext.employee_data_change import apply_approved_changes
+    company = frappe.get_all("Company", pluck="name", limit_page_length=1)[0]
+    emp = frappe.new_doc("Employee")
+    emp.first_name = "Smoke"
+    emp.last_name = "HRMS"
+    emp.gender = "Male"
+    emp.date_of_birth = "1990-01-01"
+    emp.date_of_joining = "2026-01-01"
+    emp.company = company
+    emp.personal_email = "old-smoke@example.com"
+    emp.insert(ignore_permissions=True)
+
+    req = frappe.new_doc("Employee Data Change Request")
+    req.employee = emp.name
+    req.reason = "Smoke test"
+    req.append("changes", {"fieldname": "personal_email", "field_label": "Personal Email", "old_value": emp.personal_email, "new_value": "new-smoke@example.com"})
+    req.insert(ignore_permissions=True)
+    req.workflow_state = "HR Approved"
+    apply_approved_changes(req)
+    updated = frappe.db.get_value("Employee", emp.name, "personal_email")
+    if updated != "new-smoke@example.com":
+        raise Exception(f"allowed update failed: {updated}")
+
+    bad = frappe.new_doc("Employee Data Change Request")
+    bad.employee = emp.name
+    bad.reason = "Smoke test blocked field"
+    bad.append("changes", {"fieldname": "salary", "field_label": "Salary", "new_value": "999"})
+    bad.insert(ignore_permissions=True)
+    bad.workflow_state = "HR Approved"
+    try:
+        apply_approved_changes(bad)
+    except Exception as e:
+        if "Field not allowed" not in str(e):
+            raise
+    else:
+        raise Exception("disallowed field was not blocked")
+    frappe.db.rollback()
+    return "SMOKE_OK"
