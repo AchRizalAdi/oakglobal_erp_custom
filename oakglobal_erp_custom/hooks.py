@@ -14,11 +14,11 @@ app_license = "MIT"
 fixtures = [
     {"doctype": "Role", "filters": [["role_name", "in", ["HR Admin", "HR Manager", "Payroll Manager", "Payroll User", "Department Manager", "Employee Self Service", "Recruiter", "Performance Reviewer"]]]},
     {"doctype": "Custom Field", "filters": [["dt", "in", ["Employee", "HR Request", "Employee Data Change Request", "Employee Checkin", "Attendance Request"]]]},
-    {"doctype": "DocType", "filters": [["name", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule"]]]},
+    {"doctype": "DocType", "filters": [["name", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception"]]]},
     {"doctype": "Workflow", "filters": [["document_type", "in", ["HR Request", "Employee Data Change Request"]]]},
     "Workflow State",
     "Workflow Action Master",
-    {"doctype": "Custom DocPerm", "filters": [["parent", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule"]]]},
+    {"doctype": "Custom DocPerm", "filters": [["parent", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception"]]]},
 ]
 
 doc_events = {
@@ -27,5 +27,6 @@ doc_events = {
     },
     "Employee Checkin": {
         "validate": "oakglobal_erp_custom.hrms_ext.attendance_geofence.validate_checkin",
+        "after_insert": "oakglobal_erp_custom.hrms_ext.attendance_geofence.log_checkin_validation",
     },
 }
