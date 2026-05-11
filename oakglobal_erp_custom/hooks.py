@@ -24,5 +24,8 @@ fixtures = [
 doc_events = {
     "Employee Data Change Request": {
         "on_update": "oakglobal_erp_custom.hrms_ext.employee_data_change.apply_approved_changes",
-    }
+    },
+    "Employee Checkin": {
+        "validate": "oakglobal_erp_custom.hrms_ext.attendance_geofence.validate_checkin",
+    },
 }
