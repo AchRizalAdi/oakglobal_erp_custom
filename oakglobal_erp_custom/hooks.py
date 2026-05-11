@@ -14,11 +14,11 @@ app_license = "MIT"
 fixtures = [
     {"doctype": "Role", "filters": [["role_name", "in", ["HR Admin", "HR Manager", "Payroll Manager", "Payroll User", "Department Manager", "Employee Self Service", "Recruiter", "Performance Reviewer"]]]},
     {"doctype": "Custom Field", "filters": [["dt", "in", ["Employee", "HR Request", "Employee Data Change Request", "Employee Checkin", "Attendance Request", "Salary Slip", "Overtime Slip"]]]},
-    {"doctype": "DocType", "filters": [["name", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception", "Payroll Source Trace", "Shift Change Request", "Attendance Correction Request"]]]},
+    {"doctype": "DocType", "filters": [["name", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception", "Payroll Source Trace", "Shift Change Request", "Attendance Correction Request", "HR Document Request", "HR Letter Template", "Asset Assignment", "Helpdesk Ticket", "Announcement"]]]},
     {"doctype": "Workflow", "filters": [["document_type", "in", ["HR Request", "Employee Data Change Request"]]]},
     "Workflow State",
     "Workflow Action Master",
-    {"doctype": "Custom DocPerm", "filters": [["parent", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception", "Payroll Source Trace", "Shift Change Request", "Attendance Correction Request"]]]},
+    {"doctype": "Custom DocPerm", "filters": [["parent", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception", "Payroll Source Trace", "Shift Change Request", "Attendance Correction Request", "HR Document Request", "HR Letter Template", "Asset Assignment", "Helpdesk Ticket", "Announcement"]]]},
 ]
 
 doc_events = {
