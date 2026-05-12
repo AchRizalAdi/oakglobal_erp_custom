@@ -8,10 +8,6 @@ SOURCES = ["HR Request", "Employee Data Change Request", "Attendance Correction 
 
 def execute(filters=None):
     filters = filters or {}
-
-    roles = user_roles()
-    if not (roles & HR_ROLES or MANAGER_ROLE in roles):
-        return columns, []
     columns = [
         {"label": "Source Doctype", "fieldname": "source_doctype", "fieldtype": "Data", "width": 180},
         {"label": "Source Name", "fieldname": "source_name", "fieldtype": "Dynamic Link", "options": "source_doctype", "width": 180},
@@ -21,6 +17,9 @@ def execute(filters=None):
         {"label": "Workflow State", "fieldname": "workflow_state", "fieldtype": "Data", "width": 160},
         {"label": "Modified", "fieldname": "modified", "fieldtype": "Datetime", "width": 160},
     ]
+    roles = user_roles()
+    if not (roles & HR_ROLES or MANAGER_ROLE in roles):
+        return columns, []
     cond, params = employee_condition("employee", include_manager_reports=True)
     rows = []
     for dt in SOURCES:

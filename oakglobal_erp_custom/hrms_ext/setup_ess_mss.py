@@ -142,7 +142,6 @@ def ensure_workspace(name: str) -> None:
         "title": name,
         "module": APP_MODULE,
         "public": 0,
-        "is_standard": 1,
     }
     if not frappe.db.exists("Workspace", name):
         frappe.get_doc({

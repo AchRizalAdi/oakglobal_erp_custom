@@ -6,10 +6,6 @@ from oakglobal_erp_custom.hrms_ext.setup_ess_mss import date_window, employee_co
 
 def execute(filters=None):
     filters = filters or {}
-
-    roles = user_roles()
-    if not (roles & HR_ROLES or MANAGER_ROLE in roles):
-        return columns, []
     columns = [
         {"label": "Employee", "fieldname": "employee", "fieldtype": "Link", "options": "Employee", "width": 140},
         {"label": "Employee Name", "fieldname": "employee_name", "fieldtype": "Data", "width": 180},
@@ -18,6 +14,9 @@ def execute(filters=None):
         {"label": "To Date", "fieldname": "to_date", "fieldtype": "Date", "width": 120},
         {"label": "Status", "fieldname": "status", "fieldtype": "Data", "width": 120},
     ]
+    roles = user_roles()
+    if not (roles & HR_ROLES or MANAGER_ROLE in roles):
+        return columns, []
     if not table_exists("Leave Application") or not has_column("Leave Application", "employee"):
         return columns, []
     cond, params = employee_condition("employee", include_manager_reports=True)
