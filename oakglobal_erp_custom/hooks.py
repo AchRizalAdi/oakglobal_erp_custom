@@ -19,6 +19,8 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     {"doctype": "Custom DocPerm", "filters": [["parent", "in", ["HR Request", "Employee Data Change Request", "Employee Data Change Request Field", "Attendance Location", "Attendance Geofence", "Attendance Validation Rule", "Attendance Validation Log", "Attendance Validation Exception", "Payroll Source Trace", "Shift Change Request", "Attendance Correction Request", "HR Document Request", "HR Letter Template", "Asset Assignment", "Helpdesk Ticket", "Announcement", "Recruitment Pipeline Rule", "Applicant Assessment", "Candidate Scorecard", "Webhook Endpoint", "Integration Log", "External Attendance Import", "Attendance Device", "Device Integration Setting", "Payroll Journal Mapping"]]]},
+    {"doctype": "Report", "filters": [["name", "in", ["Employee Request Center", "Manager Approval Dashboard", "Team Attendance Summary", "Team Leave Calendar", "Pending Approval Items"]]]},
+    {"doctype": "Workspace", "filters": [["name", "in", ["Employee Self Service", "Manager Self Service"]]]},
 ]
 
 doc_events = {
