@@ -31,4 +31,7 @@ doc_events = {
         "validate": "oakglobal_erp_custom.hrms_ext.attendance_geofence.validate_checkin",
         "after_insert": "oakglobal_erp_custom.hrms_ext.attendance_geofence.log_checkin_validation",
     },
+    "Salary Slip": {
+        "validate": "oakglobal_erp_custom.hrms_ext.payroll_preflight.validate_salary_slip",
+    },
 }
