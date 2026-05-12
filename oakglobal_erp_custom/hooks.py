@@ -34,4 +34,8 @@ doc_events = {
     "Salary Slip": {
         "validate": "oakglobal_erp_custom.hrms_ext.payroll_preflight.validate_salary_slip",
     },
+    "Expense Claim": {
+        "validate": "oakglobal_erp_custom.hrms_ext.reimbursement_preflight.validate_expense_claim",
+        "on_submit": "oakglobal_erp_custom.hrms_ext.reimbursement_preflight.create_payroll_trace_for_claim",
+    },
 }
