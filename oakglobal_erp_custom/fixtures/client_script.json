@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2026-05-15 08:51:32.482927",
+  "module": null,
+  "name": "Quotation Logistics",
+  "script": "\nfrappe.ui.form.on('Quotation', {\n  job_service_type(frm) {\n    if (!frm.doc.job_service_type) return;\n    frappe.db.get_doc('Job Service Type', frm.doc.job_service_type).then(service => {\n      if (!frm.doc.job_service_title) {\n        frm.set_value('job_service_title', service.service_name);\n      }\n      if (service.default_terms_template) {\n        frm.set_value('tc_name', service.default_terms_template);\n      }\n      frm.toggle_display('route_legs_section', !!service.requires_route || (frm.doc.route_legs || []).length > 0);\n      frm.toggle_display('package_details_section', !!service.requires_package_detail || (frm.doc.package_details || []).length > 0);\n    });\n  },\n  refresh(frm) {\n    frm.trigger('job_service_type');\n  },\n  total_trips(frm) {\n    if (frm.doc.total_trips && (frm.doc.items || []).length === 1 && !frm.doc.items[0].qty) {\n      frappe.model.set_value(frm.doc.items[0].doctype, frm.doc.items[0].name, 'qty', frm.doc.total_trips);\n    }\n  }\n});\n",
+  "view": "Form"
+ }
+]
